@@ -1,5 +1,9 @@
 * {
     box-sizing: border-box;
+    -webkit-user-select: none;
+    -moz-user-select: none;
+    -ms-user-select: none;
+    user-select: none;
 }
 
 .App {
@@ -84,6 +88,7 @@ h1{
     position: absolute;
     border-radius: 50%;
     cursor: pointer;
+
 }
 .new{
     width: 150px;
