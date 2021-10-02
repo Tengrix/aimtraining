@@ -1,0 +1,22 @@
+{
+  "files": {
+    "main.css": "/aimtraining/static/css/main.9a47503a.chunk.css",
+    "main.js": "/aimtraining/static/js/main.96dce1d4.chunk.js",
+    "main.js.map": "/aimtraining/static/js/main.96dce1d4.chunk.js.map",
+    "runtime-main.js": "/aimtraining/static/js/runtime-main.dd41fcd0.js",
+    "runtime-main.js.map": "/aimtraining/static/js/runtime-main.dd41fcd0.js.map",
+    "static/js/2.358aa480.chunk.js": "/aimtraining/static/js/2.358aa480.chunk.js",
+    "static/js/2.358aa480.chunk.js.map": "/aimtraining/static/js/2.358aa480.chunk.js.map",
+    "static/js/3.5f0511c5.chunk.js": "/aimtraining/static/js/3.5f0511c5.chunk.js",
+    "static/js/3.5f0511c5.chunk.js.map": "/aimtraining/static/js/3.5f0511c5.chunk.js.map",
+    "index.html": "/aimtraining/index.html",
+    "static/css/main.9a47503a.chunk.css.map": "/aimtraining/static/css/main.9a47503a.chunk.css.map",
+    "static/js/2.358aa480.chunk.js.LICENSE.txt": "/aimtraining/static/js/2.358aa480.chunk.js.LICENSE.txt"
+  },
+  "entrypoints": [
+    "static/js/runtime-main.dd41fcd0.js",
+    "static/js/2.358aa480.chunk.js",
+    "static/css/main.9a47503a.chunk.css",
+    "static/js/main.96dce1d4.chunk.js"
+  ]
+}
