@@ -1,6 +1,7 @@
 import React, {useState} from 'react';
 import './App.css';
 import Game from "./Game";
+import Result from "./Result";
 
 const initState = ['Start', 'Choose time']
 const timeState = [5, 10, 20, 30]
@@ -12,23 +13,27 @@ function App() {
     const [time, setTime] = useState<number | null>(null)
     const [circle, setCircle] = useState(<div/>)
     let [point, setPoint] = useState<number>(0)
+    let [restartTime, setRestartTime] = useState<number | null>(null)
     const startHandler = () => {
         setStart(true)
+        setTime(null)
+
     }
     const setTimeHandler = (num: number) => {
         startGame(num)
         createRandomCircle()
+        setRestartTime(num)
     }
 
-    const startGame = (time: number) => {
+    const startGame = (time: number|null) => {
         setInterval(() => {
             if (time === 0) {
-                setTime(0)
+                setStart(true)
             } else {
-                setTime(time--)
+                // @ts-ignore
+                setTime(--time)
             }
         }, 1000)
-
         setStartTime(true)
     }
 
@@ -50,8 +55,12 @@ function App() {
         return Math.floor(Math.random() * (max - min + 1) + min)
     }
     const pointHandler = () => {
-        setPoint(point++)
         createRandomCircle()
+        if(restartTime===0){
+            setPoint(0)
+        }else{
+            setPoint(++point)
+        }
 
     }
     const newGame = () => {
@@ -59,9 +68,14 @@ function App() {
         setStart(false)
         setStartTime(false)
         setPoint(0)
-        setTime(0)
+        setTime(null)
     }
-
+    // const restartGame = (time:number|null) => {
+    //     setPoint(0)
+    //     startGame(time)
+    //     setCircle(<div/>)
+    //     createRandomCircle()
+    // }
     return (
         <div className="App">
             <div className={start ? 'screen up' : 'screen'}>
@@ -80,16 +94,30 @@ function App() {
                     )}
                 </ul>
             </div>
-            <div className={startTime ? 'screen up' : 'screen'}>
-                <div>
-                    {time ! > 0 ? <h3> Left <span>00:{time ! < 10 && '0'}{time}sec</span></h3> : ''}
-                    <div className={'board'}>{time !== 0 ? circle :
-                        <h1 className={'screen'}>Score: {point}</h1>
-                    }
-                    </div>
-                    {/*{time===0&&<button onClick={newGame} className={'new'}>New game</button>}*/}
-                </div>
-            </div>
+             <Result
+                 startTime={startTime}
+                 time={time}
+                 circle={circle}
+                 point={point}
+                 newGame={newGame}
+                 // restartGame={restartGame}
+                 restartTime={restartTime}
+             />
+            {/*<div className={startTime ? 'screen up' : 'screen'}>*/}
+            {/*    <div>*/}
+            {/*        {time ! > 0 ? <h3> Left <span>00:{time ! < 10 && '0'}{time}sec</span></h3> : ''}*/}
+            {/*        <div className={'board'}>{time !== 0 ? circle :*/}
+            {/*            <h1 className={'screen'}>Score: {point}</h1>*/}
+            {/*        }*/}
+            {/*        </div>*/}
+            {/*        {time===0&&*/}
+            {/*    <span>*/}
+            {/*        One more time ?*/}
+            {/*        <button onClick={newGame} className={'new'}>Yes</button>*/}
+            {/*        <button onClick={()=>restartGame(restartTime)} className={'new'}>No</button>*/}
+            {/*    </span>}*/}
+            {/*    </div>*/}
+            {/*</div>*/}
         </div>
     );
 }

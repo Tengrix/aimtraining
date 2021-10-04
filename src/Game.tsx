@@ -6,12 +6,11 @@ type GameType = {
     time: number
 }
 
-function Game({setTimeHandler, time}: GameType) {
-
-
+const Game =  React.memo(({setTimeHandler, time}: GameType) => {
+    const [currentTime,setCurrentTime] = useState<number>(time)
     return (
-        <button onClick={() => setTimeHandler(time)} className={'time-btn'}>{time}sec</button>
+        <button onClick={() => setTimeHandler(currentTime)} className={'time-btn'}>{currentTime}sec</button>
     );
-}
+})
 
 export default Game
